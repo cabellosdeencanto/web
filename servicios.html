@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios | Cabellos de Encanto</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: url("img/fondo-textura.jpg") center/cover fixed no-repeat, linear-gradient(180deg, #f8f8f8, #eae6df);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 50px;
+      flex-wrap: wrap;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-area img {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 0 10px rgba(198, 168, 125, 0.5);
+    }
+
+    .logo-area img:hover {
+      transform: scale(1.07) rotate(3deg);
+      box-shadow: 0 0 20px rgba(198, 168, 125, 0.8);
+    }
+
+    .logo-area h1 {
+      font-size: 1.8rem;
+      color: #111;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #c6a87d;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #c6a87d;
+    }
+
+    /* SECTION */
+    section {
+      background: rgba(255, 255, 255, 0.85);
+      width: 85%;
+      margin: 150px auto 70px;
+      padding: 80px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 1.2s ease;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    /* CARRUSEL */
+    .carousel-container {
+      position: relative;
+      max-width: 900px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .carousel-slide {
+      display: flex;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    #prevBtn {
+      left: 15px;
+    }
+
+    #nextBtn {
+      right: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* FOOTER */
+    footer {
+      background: linear-gradient(180deg, #1b1b1b, #0f0f0f);
+      color: #ddd;
+      padding: 60px 40px 20px;
+      margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #c6a87d, #8a6b4f, #c6a87d);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-col h4 {
+      color: #c6a87d;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .social-icons {
+      margin-top: 30px;
+    }
+
+    .social-icons a {
+      font-size: 1.7rem;
+      color: #c6a87d;
+      margin-right: 20px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.15);
+      color: #a88965;
+    }
+
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        padding: 12px 25px;
+      }
+      nav ul {
+        justify-content: center;
+      }
+      section {
+        width: 95%;
+        padding: 60px 20px;
+      }
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="mainHeader">
+    <div class="container">
+      <div class="logo-area">
+        <img src="img/logotipo.png" alt="Cabellos de Encanto" />
+        <h1>Cabellos de Encanto</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html" class="active">Servicios</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="disenadores.html">Diseñadores</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <h2>Nuestros Servicios</h2>
+    <div class="carousel-container">
+      <div class="carousel-slide" id="carouselSlide">
+        <img src="img/servicio1.jpg" alt="Servicio 1">
+        <img src="img/servicio2.jpg" alt="Servicio 2">
+        <img src="img/servicio3.jpg" alt="Servicio 3">
+        <img src="img/servicio4.jpg" alt="Servicio 4">
+      </div>
+      <button class="carousel-btn" id="prevBtn">&#10094;</button>
+      <button class="carousel-btn" id="nextBtn">&#10095;</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Cabellos de Encanto</h4>
+        <p>Un salón donde la elegancia y la confianza se encuentran.  
+        Realza tu belleza con el toque de nuestros profesionales.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ubicación</h4>
+        <p>📍 54018, Centro, San Vicente de Chucurí, Santander</p>
+        <p>📞 316 817 4311</p>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/cabellos_encanto01?utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/15P31xUrCm/" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Cabellos de Encanto</div>
+  </footer>
+
+  <script>
+    // Animar Header al hacer scroll
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Carrusel
+    const carouselSlide = document.getElementById('carouselSlide');
+    const carouselImages = document.querySelectorAll('#carouselSlide img');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let counter = 0;
+
+    function showSlide(index) {
+      if (index < 0) counter = carouselImages.length - 1;
+      else if (index >= carouselImages.length) counter = 0;
+      else counter = index;
+      carouselSlide.style.transform = `translateX(${-counter * 100}%)`;
+    }
+
+    nextBtn.addEventListener('click', () => showSlide(counter + 1));
+    prevBtn.addEventListener('click', () => showSlide(counter - 1));
+
+    setInterval(() => showSlide(counter + 1), 4000);
+  </script>
+</body>
+</html>

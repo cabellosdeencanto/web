@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diseñadores | Cabellos de Encanto</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: url("img/fondo-textura.jpg") center/cover fixed no-repeat, linear-gradient(180deg, #f8f8f8, #eae6df);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* ======================
+       HEADER
+    ====================== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 50px;
+      flex-wrap: wrap;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-area img {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 0 10px rgba(198, 168, 125, 0.5);
+    }
+
+    .logo-area img:hover {
+      transform: scale(1.07) rotate(3deg);
+      box-shadow: 0 0 20px rgba(198, 168, 125, 0.8);
+    }
+
+    .logo-area h1 {
+      font-size: 1.8rem;
+      color: #111;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #c6a87d;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #c6a87d;
+    }
+
+    /* ======================
+       SECTION - DISEÑADORES
+    ====================== */
+    section {
+      background: rgba(255, 255, 255, 0.85);
+      width: 85%;
+      margin: 150px auto 70px;
+      padding: 80px 20px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 1.2s ease;
+    }
+
+    section h2 {
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    .designers {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .designer {
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .designer img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .designer img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .designer h3 {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    section p {
+      max-width: 750px;
+      margin: 0 auto;
+      color: #555;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ======================
+       FOOTER
+    ====================== */
+    footer {
+      background: linear-gradient(180deg, #1b1b1b, #0f0f0f);
+      color: #ddd;
+      padding: 60px 40px 20px;
+      margin-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #c6a87d, #8a6b4f, #c6a87d);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-col h4 {
+      color: #c6a87d;
+      margin-bottom: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-col p {
+      color: #ccc;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .social-icons a {
+      font-size: 1.4rem;
+      color: #c6a87d;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+        padding: 12px 25px;
+      }
+      nav ul {
+        justify-content: center;
+      }
+      section {
+        width: 95%;
+        padding: 60px 15px;
+      }
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="mainHeader">
+    <div class="container">
+      <div class="logo-area">
+        <img src="img/logotipo.png" alt="Cabellos de Encanto" />
+        <h1>Cabellos de Encanto</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="disenadores.html" class="active">Diseñadores</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section>
+    <h2>Nuestros Diseñadores</h2>
+    <div class="designers">
+      <div class="designer">
+        <img src="img/diseñador1.jpg" alt="Diseñador 1">
+        <h3>Diseñador 1</h3>
+      </div>
+      <div class="designer">
+        <img src="img/diseñador2.jpg" alt="Diseñador 2">
+        <h3>Diseñador 2</h3>
+      </div>
+    </div>
+
+    <p>
+      Este proyecto académico fue desarrollado como requisito para optar al título de <strong>Bachiller Técnico en Informática</strong> del <strong>Colegio Integrado Camilo Torres</strong>.<br><br>
+      Su elaboración forma parte del proceso de formación integral que promueve la institución, orientado al desarrollo de competencias técnicas, investigativas y éticas en el campo de la informática.
+      <br><br>
+      © Colegio Integrado Camilo Torres. Todos los derechos reservados. – 2025.
+    </p>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Cabellos de Encanto</h4>
+        <p>Un salón donde la elegancia y la confianza se encuentran.  
+        Realza tu belleza con el toque de nuestros profesionales.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ubicación</h4>
+        <p>📍 54018, Centro, San Vicente de Chucurí, Santander</p>
+        <p>📞 316 817 4311</p>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/cabellos_encanto01?utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/share/15P31xUrCm/" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Efecto de header al hacer scroll
+    window.addEventListener('scroll', function() {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>
